@@ -1,4 +1,4 @@
-{
+etappe06json ={
 	"type": "FeatureCollection",
 	"features": [
 		{
