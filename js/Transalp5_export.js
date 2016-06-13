@@ -1,4 +1,4 @@
-etappe05json ={
+etappe05json = {
 	"type": "FeatureCollection",
 	"features": [
 		{

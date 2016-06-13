@@ -34,6 +34,7 @@ window.onload = function() {
 	 transalpKarte.setView([47, 11], 10);
 	var el = L.control.elevation({collapsed: true}).addTo(transalpKarte);
 	
+	
 	var etappe01 = L.geoJson(etappe01json, {
 		style: {
 			color: "#ff0000",
@@ -99,6 +100,18 @@ window.onload = function() {
 		}
 	});
 	transalpKarte.addLayer(etappe07);
+
+	var baseLayers = {
+    "Mapbox": mapbox,
+    "OpenStreetMap": osm
+};
+
+var overlays = {
+    "Marker": marker,
+    "Roads": roadsLayer
+};
+
+L.control.layers(baseLayers, overlays).addTo(map);
 
 	var etappenGruppe = L.featureGroup([etappe01, etappe02, etappe03, etappe04, etappe05, etappe06, etappe07]);
 	transalpKarte.addLayer(etappenGruppe);
