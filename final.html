@@ -1,21 +1,26 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<title>Mountainbike Transalp 2016</title>
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-<link rel="stylesheet" href="elev/leaflet.elevation-0.0.4.css" />
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-<script src="js/transalp1_export.js"></script>
-<script src="js/transalp2_export.js"></script>
-<script src="js/transalp3_export.js"></script>
-<script src="js/transalp4_export.js"></script>
-<script src="js/transalp5_export.js"></script>
-<script src="js/transalp6_export.js"></script>
-<script src="js/transalp7_export.js"></script>
-
-<link rel="stylesheet" href="transalp.css" />  
+	<meta charset="utf-8">
+	<title>Mountainbike Transalp 2016</title>
+	
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	<link rel="stylesheet" href="elev/leaflet.elevation-0.0.4.css" />
+	
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	
+	<script src="js/transalp1_export.geojson.js"></script>
+    <script src="js/transalp2_export.geojson.js"></script>
+    <script src="js/transalp3_export.geojson.js"></script>
+	<script src="js/transalp4_export.geojson.js"></script>
+    <script src="js/transalp5_export.geojson.js"></script>
+    <script src="js/transalp6_export.geojson.js"></script>
+	<script src="js/transalp7_export.geojson.js"></script>
+	
+	<script src="js/script_sub.js"></script>
+	<script src="elev/leaflet.elevation-0.0.4.min.js"></script>
+	<link rel="stylesheet" href="transalp.css" />  
   
 </head>
 <body>
@@ -23,6 +28,15 @@
 <main>
 
 <h1>Mountainbike Transalp 2016</h1>
+
+<div id="faded">
+                  <ul class="slides">
+
+                     <li><img src="images/trans6.jpg" alt="Mountainbike Transalp Touren"></li>
+                     <li><img src="images/trans5.jpg" alt="Limit Alpencross" >  </li>
+                     <li><img src="images/trans3.jpg" alt="Best Bike Transalp"> </li>
+                  </ul>
+               </div>
 
 <table class="docs">
  <tr>
@@ -62,10 +76,7 @@
 </main>
 <div id="transalpDiv"></div>
 
-<script src="js/script_sub.js"></script>
-<script src="js/hoehe.js"></script>
-<script src="js/hash.js"></script>
-<script src="elev/leaflet.elevation-0.0.4.min.js"></script>
+
 <td style="vertical-align: top;">
 
             <h3>Nützliche Links für An- und Abreise</h3>
