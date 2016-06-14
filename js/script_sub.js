@@ -24,73 +24,21 @@ window.onload = function() {
 	};
 
 
-	
+	var transalpKarte = L.map("transalpDiv", {
+		   layers: [layers.osmlayer]
     });
-
-	var adlerkarte = L.map('adlermap', {
-        layers: [layers.osmlayer]
-    });
+     
 	
-	var etappe01 = L.geoJson(window.etappe01json, {
+	var etappe01 = L.geoJson(transalp, {
         style: {
             color: "yellow",
             weight: 10
         }
     });
 	
-
-	var etappe02 = L.geoJson(window.etappe02json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		}
-	});
 	
 
-	var etappe03 = L.geoJson(window.etappe03json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		}
-	});
-	
 
-	var etappe04 = L.geoJson(window.etappe04json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		}
-	});
-	
-
-	var etappe05 = L.geoJson(window.etappe05json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		}
-	});
-	
-
-	var etappe06 = L.geoJson(window.etappe06json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		}
-	});
-		
-
-	var etappe07 = L.geoJson(window.etappe07json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		}
-	});
-	
-
-	var baseLayers = {
-    "Mapbox": mapbox,
-    "OpenStreetMap": osm
-};
 
 var overlays = {
     "Marker": marker,
@@ -99,9 +47,6 @@ var overlays = {
 
 L.control.layers(baseLayers, overlays).addTo(transalpKarte);
 
-	var etappenGruppe = L.featureGroup([etappe01, etappe02, etappe03, etappe04, etappe05, etappe06, etappe07]);
-	transalpKarte.addLayer(etappenGruppe);
-	transalpKarte.fitBounds(etappenGruppe.getBounds());
 
 	L.control.layers({
 		"OSM": osmLayer,
@@ -112,21 +57,8 @@ L.control.layers(baseLayers, overlays).addTo(transalpKarte);
 
 	transalpKarte.fitBounds(etappe01.getBounds());
 
-	etappe01.bindPopup("<b>Etappe 01</b>");
-	etappe02.bindPopup("<b>Etappe 02</b>");
-	etappe03.bindPopup("<b>Etappe 03</b>");
-	etappe04.bindPopup("<b>Etappe 04</b>");
-	etappe05.bindPopup("<b>Etappe 05</b>");
-	etappe06.bindPopup("<b>Etappe 06</b>");
-	etappe07.bindPopup("<b>Etappe 07</b>");
+	etappe01.bindPopup("<b>Transalp</b>");
 
 
-	var bounds = etappenGruppe.getBounds();
-	var url = 'http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=20' +
-		'&minx=' + bounds.getWest() +
-		'&miny=' + bounds.getSouth() +
-		'&maxx=' + bounds.getEast() +
-		'&maxy=' + bounds.getNorth() +
-		'&size=mini_square&mapfilter=true&callback=zeigBilder';
 
 };
