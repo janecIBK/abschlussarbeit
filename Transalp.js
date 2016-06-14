@@ -35,11 +35,11 @@ window.onload = function() {
     // Etappen über GeoJSON laden und Po-pups hinzufügen
     var etappe01 = L.geoJson(window.TransalpEtappe01, {
         style: {
-            color: "yellow",
+            color: "blue",
             weight: 10
         }
     });
-    etappe01.bindPopup("<a href='http://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-1-st-johann-gaudeamushuette'><img src='http://www.tirol.at/images/d/5/w/s/q/t/w/a/w/v/w/-/374x210xacde9ec1bf3d4d4690c5be6578e1b8c2.jpg.pagespeed.ic.2-Prvy1tHR.jpg' style='width:300px;' />Etappe 01: St. Johann - Gaudeamushütte</a>");
+    etappe01.bindPopup("<a>Tag 1 Garmisch-Partenkirchen - Imst</a>");
 
     var etappe02 = L.geoJson(window.TransalpEtappe02, {
         style: {
@@ -47,41 +47,48 @@ window.onload = function() {
             weight: 10
         }
     });
-    
+    etappe02.bindPopup("<a>Tag 2 Imst - Landeck</a>");
+	
     var etappe03 = L.geoJson(window.TransalpEtappe03, {
         style: {
-            color: "blue",
+            color: "green",
             weight: 10
         }
     });
-    
+    etappe03.bindPopup("<a>Tag 3 Landeck - Nauders</a>");
+	
 	var etappe04 = L.geoJson(window.TransalpEtappe04, {
         style: {
             color: "yellow",
             weight: 10
         }
     });
+	etappe04.bindPopup("<a>Tag 4 Nauders - Naturns</a>");
 	
 	var etappe05 = L.geoJson(window.TransalpEtappe05, {
         style: {
-            color: "black",
+            color: "purple",
             weight: 10
         }
     });
 	
+	etappe05.bindPopup("<a>Tag 5 Naturns - Kaltern</a>");
 	var etappe06 = L.geoJson(window.TransalpEtappe06, {
         style: {
-            color: "white",
+            color: "orange",
             weight: 10
         }
     });
+	etappe06.bindPopup("<a>Tag 6 Kaltern - Molveno</a>");
 	
 	var etappe07 = L.geoJson(window.TransalpEtappe07, {
         style: {
-            color: "black",
+            color: "red",
             weight: 10
         }
     });
+	etappe07.bindPopup("<a>Tag 7 Molveno - Torbole sul Garda</a>");
+	
     // Etappen als Gruppe anhängen
     var etappenGruppe = L.featureGroup([etappe01, etappe02, etappe03, etappe04, etappe05, etappe06, etappe07]);
     transalpkarte.addLayer(etappenGruppe);
@@ -101,7 +108,7 @@ window.onload = function() {
             "Geoland Basemap Orthofoto": layers.bmaporthofoto30cm
         },
         {
-        "Adlerweg Etappen": etappenGruppe
+        "Transalp Etappen": etappenGruppe
         }
     ).addTo(transalpkarte);
 
@@ -144,49 +151,12 @@ window.onload = function() {
     }
 
 
-    // Erweiterung 2: Wikipedia Artikel im aktuellen Ausschnitt als overlay hinzufügen
-    var wikiOverlay = L.featureGroup();
-    layerControl.addOverlay(wikiOverlay, "Wikipedia Artikel");
-
-    // URL für den Aufruf der geonames.org Wikipedia-API erzeugen
-    var url = 'http://api.geonames.org/wikipediaBoundingBoxJSON?' +
-        'username=oeggl' +
-        '&west=' + etappenBounds.getWest() +
-        '&south=' + etappenBounds.getSouth() +
-        '&east=' + etappenBounds.getEast() +
-        '&north=' + etappenBounds.getNorth() +
-        '&callback=zeigeWikiArtikel';
-
-    // API-Aufruf als Skript einhängen
-    var script = document.createElement("script");
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-
-    // Callback-Funktion zur Visualisierung der Wikipedia Artikel als Marker mit Pop-up
-    window.zeigeWikiArtikel = function(data2) {
-        for (var i = 0; i < data2.geonames.length; i++) {
-            var p = data2.geonames[i];
-            L.marker([p.lat, p.lng], {
-                    icon: L.icon({
-                        iconUrl: "icons/wikipedia.png",
-                        iconSize: [30, 30],
-                    })
-
-                })
-                .bindPopup("<h2>" + p.title + "</h2>" +
-                    "<a href='http://" + p.wikipediaUrl + "'>Link zum Wikipedia Artikel</a>")
-                .addTo(wikiOverlay);
-        }
-    }
-    wikiOverlay.addTo(transalpkarte);
-
-
     // Erweiterung 3: interaktives Höhenprofil für die erste Etappe mit Leaflet.Elevation
     var elevationProfile = L.control.elevation({
         collapsed: true
     });
 
-    L.geoJson(window.AdlerwegEtappe01,{
+    L.geoJson(window.TransalpEtappe01,{
         onEachFeature: elevationProfile.addData.bind(elevationProfile)
     }).addTo(transalpkarte);
 

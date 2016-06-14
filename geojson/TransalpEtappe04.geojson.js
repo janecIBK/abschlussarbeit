@@ -1,4 +1,4 @@
-window.AdlerwegEtappe04 = {
+window.TransalpEtappe04 = {
 	"type": "FeatureCollection",
 	"features": [
 		{
