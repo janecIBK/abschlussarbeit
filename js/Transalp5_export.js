@@ -1,4 +1,4 @@
-etappe05json = {
+window.etappe05json = {
 	"type": "FeatureCollection",
 	"features": [
 		{

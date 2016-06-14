@@ -24,82 +24,68 @@ window.onload = function() {
 	};
 
 
-
-
-	var transalpKarte = L.map("transalpDiv");
-	var hash = new L.Hash(transalpKarte);
-	var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
-	}).addTo(transalpKarte);
-	 transalpKarte.setView([47, 11], 10);
-	var el = L.control.elevation({collapsed: true}).addTo(transalpKarte);
 	
+    });
+
+	var adlerkarte = L.map('adlermap', {
+        layers: [layers.osmlayer]
+    });
 	
-	var etappe01 = L.geoJson(etappe01json, {
-		style: {
-			color: "#ff0000",
-			weight: 10
-		},
-		onEachFeature: el.addData.bind(el)
-	});
-	transalpKarte.addLayer(etappe01);
+	var etappe01 = L.geoJson(window.etappe01json, {
+        style: {
+            color: "yellow",
+            weight: 10
+        }
+    });
+	
 
-	var etappe02 = L.geoJson(etappe02json, {
-		style: {
-			color: "##ff0000",
-			weight: 10
-		},
-		onEachFeature: el.addData.bind(el)
-	});
-	transalpKarte.addLayer(etappe02);
-
-	var etappe03 = L.geoJson(etappe03json, {
+	var etappe02 = L.geoJson(window.etappe02json, {
 		style: {
 			color: "##ff0000",
 			weight: 10
 		}
 	});
-	transalpKarte.addLayer(etappe03);
+	
 
-	var etappe04 = L.geoJson(etappe04json, {
+	var etappe03 = L.geoJson(window.etappe03json, {
 		style: {
 			color: "##ff0000",
 			weight: 10
 		}
 	});
-	transalpKarte.addLayer(etappe04);
+	
 
-	var etappe05 = L.geoJson(etappe05json, {
+	var etappe04 = L.geoJson(window.etappe04json, {
 		style: {
 			color: "##ff0000",
 			weight: 10
 		}
 	});
-	transalpKarte.addLayer(etappe06);
+	
 
-	var etappe06 = L.geoJson(etappe06json, {
+	var etappe05 = L.geoJson(window.etappe05json, {
 		style: {
 			color: "##ff0000",
 			weight: 10
 		}
 	});
-	transalpKarte.addLayer(etappe05);
+	
 
-	var etappe06 = L.geoJson(etappe06json, {
+	var etappe06 = L.geoJson(window.etappe06json, {
 		style: {
 			color: "##ff0000",
 			weight: 10
 		}
 	});
-	transalpKarte.addLayer(etappe06);
+		
 
-	var etappe07 = L.geoJson(etappe07json, {
+	var etappe07 = L.geoJson(window.etappe07json, {
 		style: {
 			color: "##ff0000",
 			weight: 10
 		}
 	});
-	transalpKarte.addLayer(etappe07);
+	
 
 	var baseLayers = {
     "Mapbox": mapbox,
@@ -111,7 +97,7 @@ var overlays = {
     "Roads": roadsLayer
 };
 
-L.control.layers(baseLayers, overlays).addTo(map);
+L.control.layers(baseLayers, overlays).addTo(transalpKarte);
 
 	var etappenGruppe = L.featureGroup([etappe01, etappe02, etappe03, etappe04, etappe05, etappe06, etappe07]);
 	transalpKarte.addLayer(etappenGruppe);
